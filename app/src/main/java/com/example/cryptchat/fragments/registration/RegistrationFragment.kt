@@ -29,6 +29,13 @@ class RegistrationFragment : Fragment() {
         binding = FragmentRegistrationBinding.inflate(inflater)
         viewModel = ViewModelProvider(requireActivity())[MainViewModel::class.java]
 
+        if (viewModel.nickname_ != null) {
+            binding.inputNicknameReg.setText(viewModel.nickname_)
+        }
+        if (viewModel.password_ != null) {
+            binding.inputPasswordReg.setText(viewModel.password_)
+        }
+
         binding.btRegister.setOnClickListener {
             if(binding.inputNicknameReg.text.isNotEmpty() and binding.inputPasswordReg.text.isNotEmpty()){
                 registration(binding.inputNicknameReg.text.toString(), binding.inputPasswordReg.text.toString())
@@ -49,7 +56,7 @@ class RegistrationFragment : Fragment() {
             User(nickName = nickname, password = password)
         )?.addOnCompleteListener { task ->
             if (task.isSuccessful) {
-                Thread.sleep(1000)
+                Thread.sleep(500)
 
                 try {
                     findNavController().navigate(R.id.mainMenuFragment)
@@ -60,6 +67,12 @@ class RegistrationFragment : Fragment() {
 
         }
 
+    }
+
+    override fun onSaveInstanceState(outState: Bundle) {
+        viewModel.nickname_ = binding.inputNicknameReg.text.toString()
+        viewModel.password_ = binding.inputPasswordReg.text.toString()
+        super.onSaveInstanceState(outState)
     }
 
 }

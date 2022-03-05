@@ -45,6 +45,9 @@ class ChatFragment : Fragment() {
     ): View {
         binding = FragmentChatBinding.inflate(inflater)
         viewModel = ViewModelProvider(requireActivity())[MainViewModel::class.java]
+
+        recoverData()
+
         (requireActivity() as MainActivity).supportActionBar?.title = "${viewModel.nameOfChatPerson}"
         chatName = viewModel.dbAPI?.getHashcodeForChat(
             viewModel.nameOfChatPerson!!
@@ -53,6 +56,11 @@ class ChatFragment : Fragment() {
         bindButtons()
 
         return binding.root
+    }
+
+    private fun recoverData() {
+        if (viewModel.mess != null)
+            binding.inputSendMessage.setText(viewModel.mess)
     }
 
     private fun bindObs() = with(viewModel.dbAPI) {
@@ -204,9 +212,17 @@ class ChatFragment : Fragment() {
         )
     }
 
+    override fun onSaveInstanceState(outState: Bundle) {
+        viewModel.isRev = true
+        viewModel.mess = binding.inputSendMessage.text.toString()
+        super.onSaveInstanceState(outState)
+    }
+
     override fun onDestroyView() = with(viewModel) {
-        aesKey?.removeObservers(viewLifecycleOwner)
-        dbAPI?.finishChat(chatName)
+        if (!isRev){
+            aesKey?.removeObservers(viewLifecycleOwner)
+            dbAPI?.finishChat(chatName)
+        }
         super.onDestroyView()
     }
 

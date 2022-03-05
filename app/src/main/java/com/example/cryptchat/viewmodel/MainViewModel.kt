@@ -13,4 +13,14 @@ class MainViewModel: ViewModel() {
     var nameOfChatPerson: String? = null
     var currentPerson: String? = null
 
+    //Check rev
+    var isRev: Boolean = false
+
+    //Login, Reg
+    var nickname_: String? = null
+    var password_: String? = null
+
+    //Chat
+    var mess: String? = null
+
 }

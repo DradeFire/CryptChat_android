@@ -71,8 +71,12 @@ class ChatAdapter(
             .from(parent.context), parent, false))
 
     override fun onBindViewHolder(holder: ItemViewHolder, position: Int) {
-        if((listOfChats[position].key.toString() != "key") and (listOfChats[position].key.toString() != "isStarted"))
-            holder.bind(listOfChats[position], viewModel)
+        if((listOfChats[position].key.toString() != "key")
+            and
+            (listOfChats[position].key.toString() != "isStarted")
+            and
+            (listOfChats[position].key.toString() != "Empty"))
+                holder.bind(listOfChats[position], viewModel)
     }
 
     override fun getItemCount(): Int = listOfChats.size

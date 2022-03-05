@@ -29,6 +29,13 @@ class LoginFragment : Fragment() {
         binding = FragmentLoginBinding.inflate(inflater)
         viewModel = ViewModelProvider(requireActivity())[MainViewModel::class.java]
 
+        if (viewModel.nickname_ != null) {
+            binding.inputNicknameLogin.setText(viewModel.nickname_)
+        }
+        if (viewModel.password_ != null) {
+            binding.inputPasswordLogin.setText(viewModel.password_)
+        }
+
         binding.btSignIn.setOnClickListener {
             if(binding.inputNicknameLogin.text.isNotEmpty() and binding.inputPasswordLogin.text.isNotEmpty()){
                 login(binding.inputNicknameLogin.text.toString(), binding.inputPasswordLogin.text.toString())
@@ -61,6 +68,12 @@ class LoginFragment : Fragment() {
 
         }
 
+    }
+
+    override fun onSaveInstanceState(outState: Bundle) {
+        viewModel.nickname_ = binding.inputNicknameLogin.text.toString()
+        viewModel.password_ = binding.inputPasswordLogin.text.toString()
+        super.onSaveInstanceState(outState)
     }
 
 }
