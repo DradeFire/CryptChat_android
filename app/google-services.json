@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "1021554248884",
+    "firebase_url": "https://cryptchat-a9ec8-default-rtdb.europe-west1.firebasedatabase.app",
+    "project_id": "cryptchat-a9ec8",
+    "storage_bucket": "cryptchat-a9ec8.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1021554248884:android:9074e94501f861c9125be1",
+        "android_client_info": {
+          "package_name": "com.example.cryptchat"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1021554248884-4qpl3dcenk2me1fjtj4hl7va50451tp4.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD72RUYkToP-AP5-whekpNF6BKL3yCOEA0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1021554248884-4qpl3dcenk2me1fjtj4hl7va50451tp4.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
